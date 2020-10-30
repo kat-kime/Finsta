@@ -12,6 +12,11 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CAPTION = "caption";
     public static final String KEY_IMAGE = "image";
+    public static final String KEY_PROFILE_PIC = "profilepic";
+
+    public Post() {
+        // Empty constructor
+    }
 
     public ParseUser getUser() {
         return getParseUser(KEY_USER);
@@ -19,6 +24,10 @@ public class Post extends ParseObject {
 
     public void setUser(ParseUser user) {
         put(KEY_USER, user);
+    }
+
+    public String getUsername() {
+        return getUser().getUsername();
     }
 
     public String getCaption() {
@@ -36,6 +45,13 @@ public class Post extends ParseObject {
     public void setImage(ParseFile file) {
         put(KEY_IMAGE, file);
     }
+
+    // Grab the direct file of the user's profile image
+    public ParseFile getProfilePic() {
+        ParseFile profile = getUser().getParseFile(KEY_PROFILE_PIC);
+        return profile;
+    }
+
 
 
 }

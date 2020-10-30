@@ -3,6 +3,8 @@ package com.katexcellence.finsta;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -18,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.katexcellence.finsta.adapters.PostAdapter;
 import com.katexcellence.finsta.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -27,6 +30,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,12 +44,28 @@ public class MainActivity extends AppCompatActivity {
     private File photoFile;
     private String photoFileName = "photo.jpg";
     private Button btnLogout;
+    ArrayList<Post> postList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Testing out new layout
+
+        // Lookup the recyclerview in activity layout
+        RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvPosts);
+
+        // Initialize contacts
+        postList = new ArrayList<>();
+        // Create adapter passing in the sample user data
+        PostAdapter adapter = new PostAdapter(postList);
+        // Attach the adapter to the recyclerview to populate items
+        rvContacts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvContacts.setLayoutManager(new LinearLayoutManager(this));
+
 
         etCaption = findViewById(R.id.etCaption);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
@@ -60,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         
-        // queryPosts();
+        queryPosts();
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
@@ -95,6 +115,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(TAG, "User: " + currentUser);
             }
         });
+
+
     }
 
     private void goLoginActivity() {
@@ -164,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
     private void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
+        query.setLimit(20);
 
         query.findInBackground(new FindCallback<Post>() {
             @Override
@@ -173,7 +196,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 for (Post post : posts) {
-                    Log.i(TAG, "Post: " + post.getCaption() + "\nFrom: " + post.getUser().getUsername());
+                    Log.i(TAG, "Post: " + post.getCaption() + "  From: " + post.getUser().getUsername() + "\nUsername again: " + post.getProfilePic());
+                    postList.add(post);
+
                 }
             }
         });

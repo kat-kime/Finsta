@@ -5,7 +5,6 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 import android.app.Application;
-import android.util.Log;
 
 public class ParseApplication extends Application {
 
@@ -22,6 +21,7 @@ public class ParseApplication extends Application {
                 .server("https://parseapi.back4app.com")
                 .build()
         );
+
     }
 
 }
