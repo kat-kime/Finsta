@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
 
     <com.parse.ui.widget.ParseImageView
         android:id="@+id/ivUserProfile"
@@ -14,6 +15,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
         tools:src="@tools:sample/avatars"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -35,13 +37,14 @@
 
     <com.parse.ui.widget.ParseImageView
         android:id="@+id/ivImage"
-        android:layout_width="406dp"
-        android:layout_height="423dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_below="@id/ivUserProfile"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
+        android:scaleType="centerCrop"
         tools:src="@tools:sample/avatars"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -52,9 +55,9 @@
         android:layout_below="@+id/ivImage"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="5dp"
-        android:text="TextView" />
+        tools:text="Hey, this is coolio!" />
 
 
 </RelativeLayout>
