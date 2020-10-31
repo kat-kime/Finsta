@@ -21,7 +21,7 @@ The following **optional** features are implemented:
 - [ ] User can tap a post to view post details, including timestamp and caption.
 - [ ] User Profiles:
       - [ ] Allow the logged in user to add a profile photo
-      - [] Display the profile photo with each post
+      - [x] Display the profile photo with each post
       - [ ] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ ] User can like a post and see number of likes for each post in the post details screen.
@@ -34,13 +34,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/kat-kime/Finsta/blob/master/walkthrough.gif' title='Video Walkthrough' width='500' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+I tried doing it without the walkthrough videos and that was super difficult!
 
 ## Open-source libraries used
 
